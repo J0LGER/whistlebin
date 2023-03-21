@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>WhistleBin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/" target="_blank">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href='static/css/roboto.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
+    <style>
+      .form-control {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: rgb(255, 255, 255);
+        background-image: url(/static/images/jam.gif);
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-size: large;
+        color: rgb(247, 8, 8);
+      }
+    </style>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/popper.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.validate.min.js"></script>
+	<script src="static/js/main.js"></script>
+  <strong style="color: whitesmoke">{{ version }}</strong> 
+  </head>
+  <body>
+    <section class="ftco-section">
+      <div class="container" id="mainForm">
+        <div class="row justify-content-center"></div>
+        <div class="text-center"><img src="/static/images/secret.gif" class="rounded" width="500"></div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-12">
+            <div class="wrapper">
+              <div class="row justify-content-center">
+                <div class="col-lg-8 mb-5"></div>
+                <div class="col-lg-8">
+                  <div class="contact-wrap">
+                    <h3 class="mb-4 text-center">Here is your secret whistle..ssshhhhh...</h3>
+                    <div class="card">
+                      <div class="card-header"> Secret </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><input type="password" class="form-control" id="secret" value="{{secret}}"><button class="btn" id="reveal-button"><i class="fas fa-eye"></i></button></p><input id="copy" type="button" class="btn btn-primary" value="Copy to Clipboard">
+							<input id="back" type="button" class="btn btn-primary float-center" value="Home">
+							<input id="burn" type="button" class="btn btn-primary float-center" value="burn secret">
+                      </div>
+                    </div>
+                    <div></div>&nbsp;&nbsp;&nbsp; <div class="col-md-6 offset-md-3">
+                      <div id="copy-message-danger" class="alert alert-danger" role="alert" hidden></div>
+                      <div id="copy-message-success" class="alert alert-success" role="alert" hidden></div>
+                      <div class="submitting"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

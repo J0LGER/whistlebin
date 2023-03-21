@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Author: Majd Alasfar -->
+    <title>WhistleBin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="static/css/roboto.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+      .progress {
+          display: block;
+          text-align: center;
+          width: 0;
+          height: 10px;
+          background: rgb(188, 152, 100);
+          transition: width .6s;
+        }
+      .progress.hide {
+          opacity: 0;
+          transition: opacity 1.3s;
+        }
+    </style>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script src="static/js/popper.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.validate.min.js"></script>
+    <script src="static/js/bootstrap-filestyle.js"></script>
+    <strong style="color: whitesmoke">{{ version }}</strong> 
+  </head>
+  <body>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center"></div>
+        <div class="text-center"><img src="/static/images/secret.gif" class="rounded" width="500"></div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-12">
+            <div class="wrapper">
+              <div class="row justify-content-center">
+                <div class="col-lg-8 mb-5"></div>
+                <div class="col-lg-8">
+                  <div class="contact-wrap">
+                    <h3 class="mb-4 text-center">Secret Whistle!</h3>
+                    <div id="form-message-warning" class="mb-4 w-100 text-center"></div>
+                    <!-- Home starts here -->
+                    <form id="homeForm" action="" method="post" class="homeForm">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <input id="secret" type="button" class="btn btn-primary btn-block" name="submit" value="Generate Secret Whistle">
+                        </div>
+                        <div class="col-md-12">
+                          <input id="file" type="button" class="btn btn-primary btn-block" name="submit" value="Generate File Whistle">
+                        </div>
+                        <div class="col-md-12">
+                          <input id="info" type="button" class="btn btn-primary btn-block" name="submit" value="Help">
+                        </div>
+                      </div>
+                    </form>
+                    <!-- Home Ends here -->
+                    <!-- Generated Link box starts here -->
+                    <div class="card" id="form-message-success">
+                      <div class="card-header"> Secret Link </div>
+                      <div class="card-body">
+                        <h5 class="card-title" id="link"></h5>
+                        <input id="copy" type="button" class="btn btn-primary" value="Copy to Clipboard">
+                        <input id="newWhistle" type="button" class="btn btn-primary float-right" value="Home">
+                      </div>
+                    </div>
+                    <div></div>&nbsp;&nbsp;&nbsp; <div class="col-md-6 offset-md-3">
+                      <div id="copy-message-danger" class="alert alert-danger" role="alert" hidden></div>
+                      <div id="copy-message-success" class="alert alert-success" role="alert" hidden></div>
+                    </div>
+                    <!-- Generated Link box ends here -->
+                    <!-- File Upload Form starts here -->
+                    <form id="fwForm" action="" method="post" class="fwForm">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="form-label" for="myFile">Choose File To Secure!</label>
+                            <br>
+                            <input type="file" id="myFile" name="filename" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="form-label" for="hours_ttl">Forget After:</label>
+                            <input type="number" class="form-control" name="hours_ttl" id="hours_ttl" min="0" max="72" value="0" >
+                            <label class="form-label" for="hours_ttl">Hours [0-72]</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="number" class="form-control" name="minutes_ttl" id="minutes_ttl" min="1" max="60" value="5">
+                            <label class="form-label" for="minutes_ttl">Minutes [1-60]</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input id="back-fwForm" type="button" class="btn btn-primary" name="back" value="Back">
+                            <input id="submitFile" type="button" class="btn btn-primary" name="submit" value="Generate Link" style="float: right;">
+                            <div class="submitting"></div>
+                            <div class="progress"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- File Upload form ends here -->
+                    <!-- Secret generation form starts here -->
+                    <form id="mwForm" action="" method="post" class="mwForm">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <textarea name="secret_message" class="form-control" id="secret_message" cols="30" rows="8" placeholder="Secret.."></textarea>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="form-label" for="secret_hours_ttl">Forget After:</label>
+                            <input type="number" class="form-control" name="secret_hours_ttl" id="secret_hours_ttl" min="0" max="72" value="0">
+                            <label class="form-label" for="secret_hours_ttl">Hours [0-72]</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="number" class="form-control" name="secret_minutes_ttl" id="secret_minutes_ttl" min="1" max="60" value="5">
+                            <label class="form-label" for="secret_minutes_ttl">Minutes [1-60]</label>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input id="back-mwForm" type="button" class="btn btn-primary" name="back" value="Back">
+                            <input id="submitSecret" type="button" class="btn btn-primary" name="submit" value="Generate Link" style="float: right;">
+                            <div class="submitting"></div>
+                            <div class="progress"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- Secret generation form ends here -->
+                    <!-- Information Form starts here -->
+                    <form id="infoForm" action="" method="post" class="infoForm">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="alert alert-info">
+                            <strong>What is WhistleBin?</strong>
+                            <br>WhistleBin helps you send secrets & confidential files securely by generating temporary links representing secrets, helping in tackling down data breaches attack surface! <br>
+                            <strong>When to use WhistleBin?</strong>
+                            <ul>
+                              <li> When you want to send secrets such as passwords through email or chatting platforms. </li>
+                              <li> When you want to send confidential files through email or chatting platforms. </li>
+                            </ul>
+                            <strong>How to use WhistleBin?</strong>
+                            <ul>
+                              <li>
+                                <strong>For Secrets: </strong> Submit your secret and an expiration time, and just send the received link to your co-worker!
+                              </li>
+                              <li>
+                                <strong>For Files:</strong> Submit your file and set an expiration time, a password-protected file will be instantly downloaded on your device, along with a the link that contains the secret password, send the new secured file and the link to your co-worker!
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input id="back-infoForm" type="button" class="btn btn-primary" name="back" value="Back">
+                          </div>
+                        </div>
+                    </form>
+                    <!-- Information Form ends here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
